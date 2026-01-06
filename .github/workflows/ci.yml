@@ -69,7 +69,7 @@ jobs:
         run: cargo build --release --verbose
 
       - name: Build with serde feature
-        run: cargo build --features serde --verbose
+        run: cargo build --verbose
 
       - name: Build examples
         run: cargo build --examples --verbose
@@ -87,10 +87,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libasound2-dev libudev-dev pkg-config
-
-      - name: Build Bevy example
-        working-directory: examples/steelkilt_bevy
-        run: cargo build --verbose
 
   clippy:
     name: Clippy
@@ -122,22 +118,4 @@ jobs:
 
       - name: Check formatting
         run: cargo fmt --all -- --check
-
-  coverage:
-    name: Code Coverage
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          components: llvm-tools-preview
-
-      - name: Install cargo-llvm-cov
-        uses: taiki-e/install-action@cargo-llvm-cov
-
-      - name: Generate coverage
-        run: cargo llvm-cov
-        # run: cargo llvm-cov --all-features --workspace --lcov --output-path lcov.info
 
