@@ -834,10 +834,12 @@ mod tests {
         note.add_section(section);
         note.update_summary(Content::Simple("Summary".to_string()));
 
-        let temp_file = "/tmp/test_note.md";
-        write_to_markdown_file(&note, temp_file).unwrap();
+        // Use cross-platform temp directory
+        let temp_dir = std::env::temp_dir();
+        let temp_file = temp_dir.join("test_note.md");
+        write_to_markdown_file(&note, temp_file.to_str().unwrap()).unwrap();
 
-        let contents = std::fs::read_to_string(temp_file).unwrap();
+        let contents = std::fs::read_to_string(&temp_file).unwrap();
         assert!(contents.contains("# Test Note"));
         assert!(contents.contains("## Section 1"));
         assert!(contents.contains("### Cues"));

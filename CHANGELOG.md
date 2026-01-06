@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2026-01-06
 
+### Fixed
+- Fixed Windows compatibility in `test_markdown_file_write` by using `std::env::temp_dir()` instead of hardcoded `/tmp` path
+
 ### Added
 - Initial release of cornell-notes library
 - Core data structures for Cornell Notes (CornellNote, Section, Cue, Note, Summary)
