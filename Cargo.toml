@@ -2,9 +2,21 @@
 name = "cornell-notes"
 version = "0.1.0"
 edition = "2021"
-authors = ["Tony Bierman"]
+authors = ["Tony Bierman <tonybierman@gmail.com>"]
 description = "A library for reading, writing, and validating Cornell Notes in standardized JSON format"
+readme = "README.md"
+homepage = "https://github.com/tonybierman/cornell-notes"
+repository = "https://github.com/tonybierman/cornell-notes"
+documentation = "https://docs.rs/cornell-notes"
 license = "MIT"
+keywords = ["cornell-notes", "note-taking", "education", "json", "markdown"]
+categories = ["data-structures", "encoding", "parser-implementations"]
+exclude = [
+    "*.json",
+    "*.md",
+    "!README.md",
+    "!CHANGELOG.md",
+]
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
